@@ -179,7 +179,7 @@
           <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
               <div class="col-lg-6 mb-lg-0 mb-4">
-                Made by Mirza, HAHAHA Lop yu <i class="fa fa-heart"></i>
+                e-Library
               </div>
             </div>
           </div>
