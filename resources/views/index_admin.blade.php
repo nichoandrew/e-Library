@@ -3,7 +3,7 @@
     {{-- content --}}
     <div class="container-fluid py-4">
           @include('partials.buku.create_buku')
-          @include('partials.siswa.create_siswa')
+          @include('partials.mahasiswa.create_mahasiswa')
         <div class="row">
           <div class="col-12">
             <div id="tablebuku">
@@ -60,8 +60,8 @@
               </div>
             </div>
             </div>
-            <div id="tablesiswa" style="display: none">
-                <button type="button" class="btn bg-gradient-success w-100" data-bs-toggle="modal" data-bs-target="#createSiswa">
+            <div id="tablemahasiswa" style="display: none">
+                <button type="button" class="btn bg-gradient-success w-100" data-bs-toggle="modal" data-bs-target="#createmahasiswa">
                     + Add Student
                   </button>
                 <div class="card mb-4">
@@ -81,26 +81,26 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($siswas as $siswa)
+                            @foreach ($mahasiswas as $mahasiswa)
                                 <tr>
                                     <td>
-                                    <p class="text-xs text-secondary mb-0">{{ $siswa->name }}</p>
+                                    <p class="text-xs text-secondary mb-0">{{ $mahasiswa->name }}</p>
                                     </td>
                                     <td>
-                                        <p class="text-xs text-secondary mb-0">{{ $siswa->kelas }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $mahasiswa->kelas }}</p>
                                     </td>
                                     <td>
-                                        <p class="text-xs text-secondary mb-0">{{ $siswa->email }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $mahasiswa->email }}</p>
                                     </td>
                                     <td>
-                                        <p class="text-xs text-secondary mb-0">{{ $siswa->role_status }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $mahasiswa->role_status }}</p>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn bg-gradient-info w-30" data-bs-toggle="modal" data-bs-target="#editSiswa_{{ $siswa->id }}">
+                                        <button type="button" class="btn bg-gradient-info w-30" data-bs-toggle="modal" data-bs-target="#editmahasiswa_{{ $mahasiswa->id }}">
                                             Edit
                                           </button>
-                                          @include('partials.siswa.edit_siswa')
-                                        <form action="{{ route("siswa.delete", $siswa->id) }}" method="POST">
+                                          @include('partials.mahasiswa.edit_mahasiswa')
+                                        <form action="{{ route("mahasiswa.delete", $mahasiswa->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn bg-gradient-danger w-30 mt-0 mb-0">Delete</button>
@@ -141,13 +141,13 @@
                                           <p class="text-xs text-secondary mb-0">{{ $transaksi->judul_buku }}</p>
                                       </td>
                                       <td>
-                                          <p class="text-xs text-secondary mb-0">{{ $transaksi->nama_siswa }}</p>
+                                          <p class="text-xs text-secondary mb-0">{{ $transaksi->nama_mahasiswa }}</p>
                                       </td>
                                       <td>
-                                        <p class="text-xs text-secondary mb-0">{{ $transaksi->kelas_siswa }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $transaksi->kelas_mahasiswa }}</p>
                                       </td>
                                       <td>
-                                        <p class="text-xs text-secondary mb-0">{{ $transaksi->siswa_email }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $transaksi->mahasiswa_email }}</p>
                                     </td>
                                   </tr>
                               @endforeach

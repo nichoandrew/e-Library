@@ -24,7 +24,7 @@ Route::get('/login', [LibraryController::class, 'login'])->name('login');
 Route::get('/register', [LibraryController::class, 'register'])->name('register');
 Route::get('/profil', [LibraryController::class, 'profil'])->name('profil');
 Route::get('/dashboard_admin', [LibraryController::class, 'index_admin'])->name('dashboard_admin');
-Route::get('/dashboard_siswa', [LibraryController::class, 'index_siswa'])->name('dashboard_siswa');
+Route::get('/dashboard_mahasiswa', [LibraryController::class, 'index_mahasiswa'])->name('dashboard_mahasiswa');
 
 
 
@@ -42,20 +42,20 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::put('/buku/{id}', [LibraryController::class, 'edit_buku'])->name
     ('buku.edit');
 
-    Route::delete('/siswa/{id}', [LibraryController::class, 'delete_siswa'])->name
-    ('siswa.delete');
-    Route::post('/siswa', [LibraryController::class, 'create_siswa'])->name
-    ('siswa.create');
-    Route::put('/siswa/{id}', [LibraryController::class, 'edit_siswa'])->name
-    ('siswa.edit');
+    Route::delete('/mahasiswa/{id}', [LibraryController::class, 'delete_mahasiswa'])->name
+    ('mahasiswa.delete');
+    Route::post('/mahasiswa', [LibraryController::class, 'create_mahasiswa'])->name
+    ('mahasiswa.create');
+    Route::put('/mahasiswa/{id}', [LibraryController::class, 'edit_mahasiswa'])->name
+    ('mahasiswa.edit');
 });
-Route::prefix('siswa')->middleware('auth:siswa')->group(function (){
-    Route::get('/dashboard_siswa', [LibraryController::class, 'index_siswa'])->name
-    ('dashboard_siswa');
+Route::prefix('mahasiswa')->middleware('auth:mahasiswa')->group(function (){
+    Route::get('/dashboard_mahasiswa', [LibraryController::class, 'index_mahasiswa'])->name
+    ('dashboard_mahasiswa');
 });
 
-Route::middleware('auth:siswa')->group(function () {
-    Route::post('/borrow/{siswaId}/{namaSiswa}/{kelasSiswa}/{bukuId}/{judulBuku}/{siswaEmail}', [LibraryController::class, 'borrow_book'])->name('borrow_book');
-    Route::post('/return-book/{siswaId}/{bukuId}', [LibraryController::class, 'return_book'])->name('return_book');
+Route::middleware('auth:mahasiswa')->group(function () {
+    Route::post('/borrow/{mahasiswaId}/{namamahasiswa}/{kelasmahasiswa}/{bukuId}/{judulBuku}/{mahasiswaEmail}', [LibraryController::class, 'borrow_book'])->name('borrow_book');
+    Route::post('/return-book/{mahasiswaId}/{bukuId}', [LibraryController::class, 'return_book'])->name('return_book');
 });
 

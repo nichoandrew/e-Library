@@ -14,7 +14,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'login_as' => 'required|in:admin,siswa',
+            'login_as' => 'required|in:admin,mahasiswa',
         ]);
 
         // Use Hash::make() to securely hash the password

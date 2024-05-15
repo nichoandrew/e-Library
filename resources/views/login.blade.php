@@ -28,15 +28,15 @@
                                     <label>Login Option</label>
                                     <div class="mb-3">
                                         <select class="form-select" name="login_as" aria-label="Default select example" id="login_as">
-                                            <option selected value="none">None</option>
+                                            <option value="none">None</option>
                                             <option value="admin">Admin</option>
-                                            <option value="siswa">Siswa</option>
+                                            <option selected value="mahasiswa">mahasiswa</option>
                                           </select>
                                     </div>
                                     <div id="kelass" style="display: none">
                                         <label>Class</label>
                                         <div class="mb-3">
-                                            <input type="kelas" name="kelas" class="form-control" placeholder="Class"
+                                            <input type="kelas" name="kelas" class="form-control" placeholder="Enter your Class (ex. Tekom A2 2021)"
                                                 aria-label="Password" aria-describedby="password-addon">
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
             $('#login_as').change(function() {
                 var selectedOption = $(this).val();
 
-                if (selectedOption === 'siswa') {
+                if (selectedOption === 'mahasiswa') {
                     $('#kelass').show();
                 } else {
                     $('#kelass').hide();

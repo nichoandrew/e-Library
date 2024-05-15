@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" type="button" id="tblBuku" onclick="toggleActive('tblBuku', 'tblSiswa', 'tblPinjam')">
+                <a class="nav-link active" type="button" id="tblBuku" onclick="toggleActive('tblBuku', 'tblmahasiswa', 'tblPinjam')">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" type="button" id="tblSiswa" onclick="toggleActive('tblSiswa', 'tblBuku', 'tblPinjam')">
+                <a class="nav-link" type="button" id="tblmahasiswa" onclick="toggleActive('tblmahasiswa', 'tblBuku', 'tblPinjam')">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" type="button" id="tblPinjam" onclick="toggleActive('tblPinjam', 'tblBuku', 'tblSiswa')">
+                <a class="nav-link" type="button" id="tblPinjam" onclick="toggleActive('tblPinjam', 'tblBuku', 'tblmahasiswa')">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -97,17 +97,17 @@
         document.getElementById(inactiveLinkId).classList.remove('active');
         document.getElementById(inactiveLinkId2).classList.remove('active');
         document.getElementById(activeLinkId).classList.add('active');
-        if (activeLinkId === 'tblSiswa') {
-            document.getElementById('tablesiswa').style.display = 'block';
+        if (activeLinkId === 'tblmahasiswa') {
+            document.getElementById('tablemahasiswa').style.display = 'block';
             document.getElementById('tablebuku').style.display = 'none';
             document.getElementById('tablePinjam').style.display = 'none';
         }else if (activeLinkId === 'tblBuku') {
             document.getElementById('tablebuku').style.display = 'block';
-            document.getElementById('tablesiswa').style.display = 'none';
+            document.getElementById('tablemahasiswa').style.display = 'none';
             document.getElementById('tablePinjam').style.display = 'none';
         }else if (activeLinkId === 'tblPinjam'){
             document.getElementById('tablebuku').style.display = 'none';
-            document.getElementById('tablesiswa').style.display = 'none';
+            document.getElementById('tablemahasiswa').style.display = 'none';
             document.getElementById('tablePinjam').style.display = 'block';
         }
     }

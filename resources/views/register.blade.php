@@ -8,7 +8,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-5 text-center mx-auto">
-              <h1 class="text-white mb-2 mt-5">Welcome!</h1>role
+              <h1 class="text-white mb-2 mt-5">Welcome!</h1>
               <p class="text-lead text-white">Glad to see you, lets make an account!</p>
             </div>
           </div>
@@ -24,9 +24,9 @@
               <div class="card-body">
                 <form role="form text-left" method="POST" action="{{ route('register_user') }}">
                   @csrf
-                  <label>Name</label>
+                  <label>Username</label>
                   <div class="mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Enter your name" aria-label="Name" aria-describedby="email-addon">
+                    <input type="text" name="name" class="form-control" placeholder="Enter your Username" aria-label="Name" aria-describedby="email-addon">
                   </div>
                   <label>Email</label>
                   <div class="mb-3">
@@ -38,16 +38,16 @@
                   </div>
                   <label>Account Option</label>
                   <div class="mb-3">
-                      <select class="form-select" name="role_status" aria-label="Default select example" id="role_status">
-                          {{-- <option selected value="none">None</option> --}}
-                          <option value="user">User</option>
+                      <select hidden class="form-select" name="role_status" aria-label="Default select example" id="role_status">
+                          <option value="none">None</option>
                           <option value="admin">Admin</option>
+                          <option selected value="mahasiswa" >mahasiswa</option>
                         </select>
                   </div>
-                  <div id="nomor" style="display: none">
+                  <div id="kelasz" style="display: none">
                     <label>Class</label>
                     <div class="mb-3">
-                      <input type="nomor" name="nomor" class="form-control" placeholder="Enter your Major (ex. Teknik Komputer 21)" aria-label="Password" aria-describedby="password-addon">
+                      <input type="kelas" name="kelas" class="form-control" placeholder="Enter your Class (ex. Tekom A2 2021)" aria-label="Password" aria-describedby="password-addon">
                     </div>
                   </div>
                   <div class="form-check form-check-info text-left">
@@ -73,13 +73,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         var roleStatusSelect = document.getElementById('role_status');
-        var nomorzDiv = document.getElementById('nomor');
+        var kelaszDiv = document.getElementById('kelasz');
 
         roleStatusSelect.addEventListener('change', function () {
-            if (roleStatusSelect.value === 'user') {
-                nomorDiv.style.display = 'block';
+            if (roleStatusSelect.value === 'mahasiswa') {
+                kelaszDiv.style.display = 'block';
             } else {
-                nomorDiv.style.display = 'none';
+                kelaszDiv.style.display = 'none';
             }
         });
     });

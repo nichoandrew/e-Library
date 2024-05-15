@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\Buku;
-use App\Models\Siswa;
+use App\Models\mahasiswa;
 use Illuminate\Support\Facades\Auth;
 
 class LibraryController extends Controller
 {
     public function index_admin () {
         $bukus = Buku::all();
-        $siswas = Siswa::all();
+        $mahasiswas = mahasiswa::all();
         $transaksis = Transaction::all();
-        return view('index_admin', compact('bukus', 'siswas', 'transaksis'));
+        return view('index_admin', compact('bukus', 'mahasiswas', 'transaksis'));
     }
 
-    public function index_siswa () {
+    public function index_mahasiswa () {
         $bukus = Buku::all();
-        $siswa = Auth::guard('siswa')->user(); 
+        $mahasiswa = Auth::guard('mahasiswa')->user(); 
     
-        return view('index_siswa', compact('bukus', 'siswa'));
+        return view('index_mahasiswa', compact('bukus', 'mahasiswa'));
     }
 
     public function login () {
@@ -69,13 +69,13 @@ class LibraryController extends Controller
     }
 
 
-    public function delete_siswa($id) {
-        $siswa = Siswa::findOrFail($id);
-        $siswa->delete();
+    public function delete_mahasiswa($id) {
+        $mahasiswa = mahasiswa::findOrFail($id);
+        $mahasiswa->delete();
         return redirect()->route('dashboard_admin')->with('success', 'Deleted!');
     }
 
-    public function create_siswa(Request $request) {
+    public function create_mahasiswa(Request $request) {
         $datas = $request->validate([
             'name'=>'required|string',
             'kelas'=>'required|string',
@@ -84,11 +84,11 @@ class LibraryController extends Controller
             'role_status'=>'required|string'
         ]);
 
-        Siswa::create($datas);
+        mahasiswa::create($datas);
         return redirect()->route('dashboard_admin')->with('success', 'Student Added!');
     }
 
-    public function edit_siswa(Request $request, $id) {
+    public function edit_mahasiswa(Request $request, $id) {
         $datas = $request->validate([
             'name'=>'required|string',
             'kelas'=>'required|string',
@@ -97,12 +97,12 @@ class LibraryController extends Controller
             'role_status'=>'required|string'
         ]);
 
-        $siswa = Siswa::find($id);
-        $siswa->update($datas);
+        $mahasiswa = mahasiswa::find($id);
+        $mahasiswa->update($datas);
         return redirect()->route('dashboard_admin')->with('success', 'Student Edited!');
     }
 
-    public function borrow_book(Request $request, $siswaId, $namaSiswa, $kelasSiswa, $bukuId, $judulBuku, $siswaEmail)
+    public function borrow_book(Request $request, $mahasiswaId, $namamahasiswa, $kelasmahasiswa, $bukuId, $judulBuku, $mahasiswaEmail)
     {
 
         $buku = Buku::find($bukuId);
@@ -110,26 +110,26 @@ class LibraryController extends Controller
         if ($buku && $buku->stok_buku > 0) {
             // Create a transaction
             Transaction::create([
-                'siswa_id' => $siswaId,
-                'nama_siswa' => $namaSiswa,
-                'kelas_siswa' => $kelasSiswa,
+                'mahasiswa_id' => $mahasiswaId,
+                'nama_mahasiswa' => $namamahasiswa,
+                'kelas_mahasiswa' => $kelasmahasiswa,
                 'buku_id' => $bukuId,
                 'judul_buku' => $judulBuku,
-                'siswa_email' => $siswaEmail,
+                'mahasiswa_email' => $mahasiswaEmail,
             ]);
 
             // Update the book stock
             $buku->stok_buku -= 1;
             $buku->save();
 
-            return redirect()->route('dashboard_siswa')->with('success', 'Book Borrowed!');
+            return redirect()->route('dashboard_mahasiswa')->with('success', 'Book Borrowed!');
         } else {
-            return redirect()->route('dashboard_siswa')->with('error', 'Book is not available for borrowing.');
+            return redirect()->route('dashboard_mahasiswa')->with('error', 'Book is not available for borrowing.');
         }
     }
-    public function return_book($siswaId, $bukuId)
+    public function return_book($mahasiswaId, $bukuId)
 {
-    $transaction = Transaction::where('siswa_id', $siswaId)
+    $transaction = Transaction::where('mahasiswa_id', $mahasiswaId)
         ->where('buku_id', $bukuId)
         ->whereNull('returned_at')
         ->first();
@@ -146,9 +146,9 @@ class LibraryController extends Controller
         // Delete the transaction record
         $transaction->delete();
 
-        return redirect()->route('dashboard_siswa')->with('success', 'Book Returned!');
+        return redirect()->route('dashboard_mahasiswa')->with('success', 'Book Returned!');
     } else {
-        return redirect()->route('dashboard_siswa')->with('error', 'Book could not be returned.');
+        return redirect()->route('dashboard_mahasiswa')->with('error', 'Book could not be returned.');
     }
 }
 
