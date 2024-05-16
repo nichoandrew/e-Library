@@ -50,7 +50,7 @@
                                         </form>
                                     @else
                                         @if ($buku->stok_buku > 0)
-                                            <form action="{{ route('borrow_book', ['mahasiswaId' => $mahasiswa->id, 'namamahasiswa' => $mahasiswa->name, 'kelasmahasiswa' => $mahasiswa->kelas, 'bukuId' => $buku->id, 'judulBuku' => $buku->judul, 'mahasiswaEmail' => $siswa->email]) }}" method="POST">
+                                            <form action="{{ route('borrow_book', ['mahasiswaId' => $mahasiswa->id, 'namamahasiswa' => $mahasiswa->name, 'kelasmahasiswa' => $mahasiswa->kelas, 'bukuId' => $buku->id, 'judulBuku' => $buku->judul, 'mahasiswaEmail' => $mahasiswa->email]) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn bg-gradient-primary w-30">Borrow</button>
                                             </form>

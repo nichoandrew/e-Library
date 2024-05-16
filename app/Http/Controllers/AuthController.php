@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\mahasiswa;
+use App\Models\Mahasiswa;
 
 class AuthController extends Controller
 {
@@ -55,7 +55,7 @@ class AuthController extends Controller
                 'role_status' => $request->input('role_status'),
             ]);
         } elseif ($request->input('role_status') === 'mahasiswa') {
-            mahasiswa::create([
+            Mahasiswa::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'password' => $hashedPassword,

@@ -40,9 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'siswa' => [
+        'mahasiswa' => [
             'driver' => 'session',
-            'provider' => 'siswas',
+            'provider' => 'mahasiswas',
         ],
     ],
 
@@ -68,9 +68,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'siswas' => [
+        'mahasiswas' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Siswa::class,
+            'model' => App\Models\mahasiswa::class,
         ],
 
         // 'users' => [
@@ -105,8 +105,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-    //    'siswas' => [
-    //        'provider' => 'siswas',
+    //    'mahasiswas' => [
+    //        'provider' => 'mahasiswas',
     //        'table' => 'password_reset_tokens',
     //        'expire' => 60,
     //        'throttle' => 60,
